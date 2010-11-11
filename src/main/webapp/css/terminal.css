@@ -1,0 +1,41 @@
+.hudsonterminal {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.hudsonterminal .titleBar {
+    width: 100%;
+    text-align: center;
+    padding: 3px 0px 3px 0px;
+    font-size: 14px;
+    background-color: gray;
+    color: white;;
+}
+
+.hudsonterminal .console {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    overflow: auto;
+    width: 800px;
+    height: 400px;
+    padding: 0px 0px 0px 5px;
+    filter:alpha(opacity=75);
+    -moz-opacity: 0.75;
+    opacity: 0.75
+}
+
+.hudsonterminal .console input {
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    width: 700px;
+    border: 0px;
+    outline:0;
+}
+
+.hudsonterminal .console pre {
+    padding: 0px 0px 0px 2px;
+    margin: 0px;
+}

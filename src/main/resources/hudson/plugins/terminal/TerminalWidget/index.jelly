@@ -1,0 +1,14 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
+  <l:isAdmin>
+    <link rel="stylesheet" type="text/css" href="${rootURL}/plugin/terminal/css/terminal.css"/>
+    <script src="${rootURL}/plugin/terminal/js/jquery-1.4.2.min.js"></script>
+    <script>
+        window.j${'$'} = jQuery.noConflict();
+        window.TerminalContext = {
+            nodeNames: ${it.nodeNames}
+        };
+    </script>
+    <script src="${rootURL}/plugin/terminal/js/jquery-ui-1.8.6.custom.min.js"></script>
+    <script src="${rootURL}/plugin/terminal/js/terminal.js"></script>
+  </l:isAdmin>
+</j:jelly>
