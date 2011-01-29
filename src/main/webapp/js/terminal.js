@@ -150,7 +150,7 @@ Terminal.prototype = {
 
 j$(function() {
     var terminal = new Terminal()
-    j$.each(j$('a[href="/#terminal"]'), function(index, link) {
+    j$.each(j$('a[href="' + rootURL + '/#terminal"]'), function(index, link) {
         j$(link).click(function() {
             terminal.panel.toggle()
             j$('input', terminal.panel).focus()
