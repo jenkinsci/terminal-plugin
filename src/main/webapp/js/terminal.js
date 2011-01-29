@@ -108,7 +108,7 @@ Terminal.prototype = {
             return
         }
         j$.ajax({
-            'url' : rootURL + self.node=='master'?'/script':'/computer/'+self.node+'/script',
+            'url' : rootURL + (self.node=='master'?'/script':'/computer/'+self.node+'/script'),
             'data' : 'script=' + encodeURIComponent('println(("""' + command.split(/[^\\]\|/).join('""".execute() | """') + '""".execute()).text)'),
             'beforeSend': function(xhr) {
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
