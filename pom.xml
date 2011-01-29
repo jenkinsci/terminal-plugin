@@ -9,7 +9,7 @@
 
   <groupId>org.jvnet.hudson.plugins</groupId>
   <artifactId>terminal</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>hpi</packaging>
   <name>Hudson Terminal Plugin</name>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Terminal+Plugin</url>
