@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jvnet.hudson.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.384</version>
+    <version>1.388</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -13,6 +13,18 @@
   <packaging>hpi</packaging>
   <name>Hudson Terminal Plugin</name>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Terminal+Plugin</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:hudson/terminal-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:hudson/terminal-plugin.git</developerConnection>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>java.net-m2-repository</id>
+      <url>http://maven.hudson-labs.org:8081/content/repositories/releases/</url>
+    </repository>
+  </distributionManagement>
 
   <developers>
     <developer>
