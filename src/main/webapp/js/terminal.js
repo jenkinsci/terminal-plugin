@@ -1,4 +1,4 @@
-(function() {
+(function($) {
 
 function CommandHistory() {
     this.histories = []
@@ -46,9 +46,9 @@ CommandHistory.prototype = {
 }
 
 function Terminal() {
-    var titleBar = j$('<div class="titleBar">Jenkins Terminal</div>')
-    this.console = j$('<div/>').attr('class', 'console')
-    this.panel = j$('<div style="display:none" class="jenkinsterminal"/>')
+    var titleBar = $('<div class="titleBar">Jenkins Terminal</div>')
+    this.console = $('<div/>').attr('class', 'console')
+    this.panel = $('<div style="display:none" class="jenkinsterminal"/>')
         .append(titleBar).append(this.console).appendTo(document.body)
         .draggable({
             'handle' : titleBar,
@@ -65,13 +65,13 @@ Terminal.prototype = {
         this.newLine(cmd || '')
     },
     log: function(text) {
-        this.console.append(j$('<pre></pre>').text('[JENKINS TERMINAL] ' + text))
+        this.console.append($('<pre></pre>').text('[JENKINS TERMINAL] ' + text))
     },
     newLine : function(val) {
         var self = this;
-        var input = j$('<input type="text"/>').val(val || '').keydown(function(e) {
+        var input = $('<input type="text"/>').val(val || '').keydown(function(e) {
             if (/* enter */e.keyCode == 13) {
-                input.after(j$('<span/>').text(input.val()))
+                input.after($('<span/>').text(input.val()))
                 input.remove();
                 self.exec(input.val())
             } else if (/* up */e.keyCode == 38) {
@@ -83,7 +83,7 @@ Terminal.prototype = {
                 return false
             }
         });
-        self.console.append(j$('<div/>')
+        self.console.append($('<div/>')
             .append('<span style="padding-right:5px">'+self.node+'&gt;</span>')
             .append(input)
         )
@@ -108,18 +108,22 @@ Terminal.prototype = {
             self.execJenkinsCmd(m[1])
             return
         }
-        j$.ajax({
+        $.ajax({
             'url' : rootURL + (self.node=='master'?'/script':'/computer/'+self.node+'/script'),
             'data' : 'script=' + encodeURIComponent('println(("""' + command.split(/[^\\]\|/).join('""".execute() | """') + '""".execute()).text)'),
             'beforeSend': function(xhr) {
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             },
             'success': function(html) {
-                self.console.append(j$('pre', j$(html))[1])
+                self.console.append($('pre', $(html))[1])
                 self.newLine()
             },
             'error': function(xhr, status, err) {
-                self.log('ERROR: ' + xhr.status)
+                if (status == 'timeout') {
+                    self.log('ERROR: Time out')
+                } else {
+                    self.log('ERROR: ' + xhr.status)
+                }
                 self.newLine()
             },
             timeout: 5000
@@ -136,11 +140,11 @@ Terminal.prototype = {
     },
     _jenkinsCommands: {
         'lsnode': function(terminal) {
-            terminal.console.append(j$('<pre></pre>').text(TerminalContext.nodeNames.join('\n')))
+            terminal.console.append($('<pre></pre>').text(TerminalContext.nodeNames.join('\n')))
         },
         'chnode': function(terminal, args) {
             args[0] = args[0] || 'master'
-            if (args[0] != 'master' && j$.inArray(args[0], TerminalContext.nodeNames) < 0) {
+            if (args[0] != 'master' && $.inArray(args[0], TerminalContext.nodeNames) < 0) {
                 terminal.log('No such node: ' + args[0])
             } else {
                 terminal.node = args[0]
@@ -149,15 +153,15 @@ Terminal.prototype = {
     }
 }
 
-j$(function() {
+$(function() {
     var terminal = new Terminal()
-    j$.each(j$('a[href="' + rootURL + '/#terminal"]'), function(index, link) {
-        j$(link).click(function() {
+    $.each($('a[href="' + rootURL + '/#terminal"]'), function(index, link) {
+        $(link).click(function() {
             terminal.panel.toggle()
-            j$('input', terminal.panel).focus()
+            $('input', terminal.panel).focus()
             return false
         })
     })
 })
 
-})()
+})(jQuery)
