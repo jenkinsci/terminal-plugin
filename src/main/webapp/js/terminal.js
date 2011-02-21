@@ -46,9 +46,9 @@ CommandHistory.prototype = {
 }
 
 function Terminal() {
-    var titleBar = j$('<div class="titleBar">Hudson Terminal</div>')
+    var titleBar = j$('<div class="titleBar">Jenkins Terminal</div>')
     this.console = j$('<div/>').attr('class', 'console')
-    this.panel = j$('<div style="display:none" class="hudsonterminal"/>')
+    this.panel = j$('<div style="display:none" class="jenkinsterminal"/>')
         .append(titleBar).append(this.console).appendTo(document.body)
         .draggable({
             'handle' : titleBar,
@@ -65,7 +65,7 @@ Terminal.prototype = {
         this.newLine(cmd || '')
     },
     log: function(text) {
-        this.console.append(j$('<pre></pre>').text('[HUDSON TERMINAL] ' + text))
+        this.console.append(j$('<pre></pre>').text('[JENKINS TERMINAL] ' + text))
     },
     newLine : function(val) {
         var self = this;
@@ -80,6 +80,7 @@ Terminal.prototype = {
                 input.val(self.history.next())
             } else if (/* ctrl + l */e.ctrlKey && e.keyCode == 76) {
                 self.clear(input.val())
+                return false
             }
         });
         self.console.append(j$('<div/>')
@@ -102,9 +103,9 @@ Terminal.prototype = {
             return
         }
         self.history.add(command)
-        var m = command.match(/hudson\s+(.*)/)
+        var m = command.match(/jenkins\s+(.*)/)
         if (m) {
-            self.execHudsonCmd(m[1])
+            self.execJenkinsCmd(m[1])
             return
         }
         j$.ajax({
@@ -124,16 +125,16 @@ Terminal.prototype = {
             timeout: 5000
         })
     },
-    execHudsonCmd: function(command) {
+    execJenkinsCmd: function(command) {
         var self = this
         var args = command.split(/\s/)
         var cmd = args.shift();
-        (this._hudsonCommands[cmd] || function(terminal, args) {
+        (this._jenkinsCommands[cmd] || function(terminal, args) {
             terminal.log('No such command:' + command)
         })(self, args);
         self.newLine()
     },
-    _hudsonCommands: {
+    _jenkinsCommands: {
         'lsnode': function(terminal) {
             terminal.console.append(j$('<pre></pre>').text(TerminalContext.nodeNames.join('\n')))
         },

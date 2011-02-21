@@ -1,10 +1,10 @@
-.hudsonterminal {
+.jenkinsterminal {
     position: absolute;
     top: 30px;
     left: 30px;
 }
 
-.hudsonterminal .titleBar {
+.jenkinsterminal .titleBar {
     width: 100%;
     text-align: center;
     padding: 3px 0px 3px 0px;
@@ -13,7 +13,7 @@
     color: white;;
 }
 
-.hudsonterminal .console {
+.jenkinsterminal .console {
     background-color: black;
     color: white;
     font-size: 14px;
@@ -26,7 +26,7 @@
     opacity: 0.75
 }
 
-.hudsonterminal .console input {
+.jenkinsterminal .console input {
     background-color: black;
     color: white;
     font-size: 14px;
@@ -35,7 +35,7 @@
     outline:0;
 }
 
-.hudsonterminal .console pre {
+.jenkinsterminal .console pre {
     padding: 0px 0px 0px 2px;
     margin: 0px;
 }
