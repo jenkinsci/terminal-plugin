@@ -1,30 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
-    <groupId>org.jvnet.hudson.plugins</groupId>
+    <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.388</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>1.396</version>
   </parent>
 
-  <groupId>org.jvnet.hudson.plugins</groupId>
   <artifactId>terminal</artifactId>
   <version>1.2-SNAPSHOT</version>
   <packaging>hpi</packaging>
-  <name>Hudson Terminal Plugin</name>
-  <url>http://wiki.hudson-ci.org/display/HUDSON/Terminal+Plugin</url>
+  <name>Jenkins Terminal Plugin</name>
+  <url>http://wiki.jenkins-ci.org/display/JENKINS/Terminal+Plugin</url>
 
   <scm>
-    <connection>scm:git:git@github.com:hudson/terminal-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:hudson/terminal-plugin.git</developerConnection>
+    <connection>scm:git:git@github.com:jenkinsci/terminal-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/terminal-plugin.git</developerConnection>
   </scm>
 
-  <distributionManagement>
+  <repositories>
     <repository>
-      <id>java.net-m2-repository</id>
-      <url>http://maven.hudson-labs.org:8081/content/repositories/releases/</url>
+      <id>m.g.o-public</id>
+      <url>http://maven.glassfish.org/content/groups/public/</url>
     </repository>
-  </distributionManagement>
+  </repositories>
 
   <developers>
     <developer>
@@ -32,4 +31,13 @@
       <name>Kiyotaka Oku</name>
     </developer>
   </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>jquery-ui</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
 </project>
