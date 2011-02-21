@@ -2,7 +2,6 @@
   <l:isAdmin>
     <link rel="stylesheet" type="text/css" href="${rootURL}/plugin/terminal/css/terminal.css"/>
     <script>
-        window.j${'$'} = jQuery.noConflict();
         window.TerminalContext = {
             nodeNames: ${it.nodeNames}
         };
