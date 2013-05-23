@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.397</version>
+    <version>1.515</version>
   </parent>
 
   <artifactId>terminal</artifactId>
-  <version>1.4-SNAPSHOT</version>
+  <version>1.5-SNAPSHOT</version>
   <packaging>hpi</packaging>
   <name>Jenkins Terminal Plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Terminal+Plugin</url>
@@ -30,13 +30,17 @@
       <id>kiy0taka</id>
       <name>Kiyotaka Oku</name>
     </developer>
+    <developer>
+      <id>joeyjiao</id>
+      <name>Joey Jiao</name>
+    </developer>
   </developers>
 
   <dependencies>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>jquery-ui</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
   </dependencies>
 
