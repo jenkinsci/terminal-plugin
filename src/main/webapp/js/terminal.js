@@ -111,6 +111,7 @@ Terminal.prototype = {
         $.ajax({
             'url' : rootURL + (self.node=='master'?'/script':'/computer/'+self.node+'/script'),
             'data' : 'script=' + encodeURIComponent('println(("""' + command.split(/[^\\]\|/).join('""".execute() | """') + '""".execute()).text)'),
+            'type' : 'POST',
             'beforeSend': function(xhr) {
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             },
