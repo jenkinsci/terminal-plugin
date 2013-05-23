@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>terminal</artifactId>
-  <version>1.5-SNAPSHOT</version>
+  <version>1.4</version>
   <packaging>hpi</packaging>
   <name>Jenkins Terminal Plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Terminal+Plugin</url>
